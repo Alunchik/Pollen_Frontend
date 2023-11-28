@@ -1,18 +1,23 @@
 import axios from "axios";
+import {useCookies} from "react-cookie";
+//import React from 'react';
 
 
-export const poll_post_request = async (username, email, password)=> {
+
+export const get_all_polls_request = async ()=> {
     try {
-        const response = await axios.post("http://localhost:8189/registration",
-            {
-                "email": email,
-                "username": username,
-                "password": password,
-                "confirmPassword": password
-            });
-        alert(response.data)
+        const response = await axios.get("http://localhost:8189/poll");
+        return response.data
     } catch (e) {
         alert(e)
-        alert(e.data)
+    }
+}
+
+export const post_poll = async (poll, token)=>{
+    try{
+        const response = await axios.post("http://localhost:8189/poll", poll, { headers: {"Authorization" : `Bearer ${token}`} })
+        return response.data
+    } catch (e){
+        alert(e)
     }
 }

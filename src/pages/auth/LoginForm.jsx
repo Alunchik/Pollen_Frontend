@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
 import "../../style/Form.css"
-import {login_request} from "../../actions/user";
+import {login_request} from "../../actions/auth";
+import {useCookies} from "react-cookie";
 
 function LoginForm() {
 
     const src = "localhost:8189";
     const [password,setPassword] = useState("")
     const [username,setUsername] = useState("")
+    const [cookie, setCookie] = useCookies(["token"]);
 
     const login = () => {
-        var response = login_request(username, password);
+        var token = login_request(username, password);
+       token.then((value)=>setCookie("token", value))
+        alert("success!")
     }
 
 

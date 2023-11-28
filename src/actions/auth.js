@@ -10,10 +10,9 @@ export const registration_request = async (username, email, password)=> {
                 "password": password,
                 "confirmPassword": password
             });
-        alert(response.data)
+        return(response.data)
     } catch (e) {
         alert(e)
-        alert(e.data)
     }
 }
 
@@ -24,8 +23,8 @@ export const login_request = async (username, password)=> {
                 "username": username,
                 "password": password,
             });
-       var token = response.data.token
-    return response;
+        axios.defaults.headers.common['Authorization'] = "Bearer " + response.data.token
+      return response.data.token
     } catch (e) {
         alert(e)
     }

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
-
+import {post_poll} from "../actions/poll";
+import {useCookies} from "react-cookie";
 
 function Answer(name){
     return
@@ -16,6 +17,10 @@ function Answer(name){
 function CreatePoll() {
     const [answerList,setAnswerListEmail] = useState([])
     const [answer,setAnswer] = useState("")
+    const [pollName,setPollName] = useState("")
+    const [cookie,setCookie] = useCookies("")
+
+
 
     function addAnswer(){
         setAnswerListEmail([...answerList, answer])
@@ -36,6 +41,19 @@ function CreatePoll() {
         )
     }
 
+    function createPoll(){
+        var poll = {
+            "pollTopic": pollName,
+            "question":{
+                "questionText":pollName,
+                "answers":
+                       answerList.map((val)=>{ return {"answerText":val}})
+            }
+        }
+     var response = post_poll(poll, cookie.token)
+        alert("success")
+    }
+
     return(
         <div>
             <form action="">
@@ -43,7 +61,7 @@ function CreatePoll() {
                     <h1>Create poll</h1>
 
                     <label htmlFor="pollName">Poll name</label>
-                    <input   type="text" placeholder="pollName" name="username" required/>
+                    <input val={pollName} onChange={event => setPollName(event.target.value)}  type="text" placeholder="pollName" name="username" required/>
 
                     <div>
                         <AnswerContainer></AnswerContainer>
@@ -53,6 +71,7 @@ function CreatePoll() {
                     <input val={answer} onChange={event => setAnswer(event.target.value)} type="text" placeholder="answerName" id="answerInput" name="answerName" required/>
 
                     <button type="button" onClick={addAnswer}>Add answer</button>
+                    <button type="button" onClick={createPoll}>Create</button>
 
                 </div>
             </form>

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "../../style/Form.css"
 import axios from 'axios';
-import {registration_request} from "../../actions/user";
+import {registration_request} from "../../actions/auth";
 
 function RegistrationForm(){
     const src = "localhost:8189";
@@ -15,12 +15,10 @@ function RegistrationForm(){
             var response = registration_request(username, email, password);
             alert("success")
         }
-
         //password does not match password confirmation
         else{
             alert("passwords has to match!#$#&$^#")
         }
-
     }
 
     return(
