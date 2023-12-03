@@ -42,8 +42,9 @@ function Poll(poll, token) {
 
     return(
         <div class="pollContainer">
-            <form onSubmit={vote} class=" formContainer">
 
+            <form onSubmit={vote} class=" formContainer">
+                <div className="pollAuthor">{poll.userLogin}</div>
                 <h1 class="pollName">{question}</h1>
                 <div class="answerList">
                     <ul>

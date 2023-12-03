@@ -25,6 +25,14 @@
 input{
 
 }
+.pollAuthor{
+    float: left;
+    text-align: left;
+    display: block;
+    height: 10px;
+    margin: 0;
+    align-self: start;
+}
 
 .poll{
     background-color: rosybrown;
