@@ -28,7 +28,7 @@ function Main() {
                 <div className={"loginForm formContainer"}>
                     <div>
                         {polls.map((poll)=>(
-                            Poll(poll)
+                            Poll(poll, cookie.token)
                         ))}
                     </div>
                 </div>
