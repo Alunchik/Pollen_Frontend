@@ -5,9 +5,11 @@ import {useCookies} from "react-cookie";
 
 function Answer(answer, question){
     return <li class="answerElem">
-        <label htmlFor={answer.id}>{answer.answerText}</label>
+        <div class="answerText">
+            {answer.answerText}
+        </div>
+        <div>{answer.selected}</div>
         <input type="radio" name={question} id={answer.id} value={answer.id}/>
-        <p>{answer.selected}</p>
     </li>
 }
 
@@ -39,19 +41,17 @@ function Poll(poll, token) {
        // var question=poll.pollTopic
 
     return(
-        <div>
-            <form onSubmit={vote}>
-            <div class="poll">
+        <div class="pollContainer">
+            <form onSubmit={vote} class=" formContainer">
+
                 <h1 class="pollName">{question}</h1>
-                <div>
-                <div>
+                <div class="answerList">
                     <ul>
                         {answers.map(ans=>Answer(ans, question))}
                     </ul>
-                </div>
             </div>
                 <button class="voteButton">Vote</button>
-            </div>
+
             </form>
         </div>
     );

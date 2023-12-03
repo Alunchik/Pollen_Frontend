@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "../../style/Form.css"
 import {login_request} from "../../actions/auth";
 import {useCookies} from "react-cookie";
-
+import "../../style/Auth.css"
 function LoginForm() {
 
     const src = "localhost:8189";
@@ -18,7 +18,7 @@ function LoginForm() {
 
 
     return(
-        <div>
+        <div class="auth">
             <form action="">
                 <div className={"loginForm formContainer"}>
                     <h1>Login</h1>

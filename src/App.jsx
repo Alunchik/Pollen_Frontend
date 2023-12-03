@@ -6,6 +6,8 @@ import RegistrationForm from "./pages/auth/RegistrationForm";
 import CreatePoll from "./pages/CreatePoll";
 import Poll from "./pages/Poll";
 import Main from "./pages/Main";
+import Header from "./Util/Header"
+import "./style/Main.css"
 
 function App() {
 
@@ -13,7 +15,9 @@ function App() {
   // const cash = useSelector(state=>state)
 
 
-  return (
+  return (<body>
+      <Header></Header>
+      <main>
       <BrowserRouter>
         <Routes>
             <Route path="main" element={<Main/>}/>
@@ -24,6 +28,8 @@ function App() {
             <Route path="registration" element={<RegistrationForm />} />
         </Routes>
       </BrowserRouter>
+      </main>
+      </body>
     // <div className="App">
     //   <header className="App-header">
     //     <p>

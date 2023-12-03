@@ -25,7 +25,7 @@ function Main() {
 
     return(
         <div>
-                <div className={"loginForm formContainer"}>
+                <div className="pollList">
                     <div>
                         {polls.map((poll)=>(
                             Poll(poll, cookie.token)

@@ -55,9 +55,8 @@ function CreatePoll() {
     }
 
     return(
-        <div>
-            <form action="">
-                <div className={"pollForm formContainer"}>
+        <div class="auth">
+            <form action="" class="formContainer">
                     <h1>Create poll</h1>
 
                     <label htmlFor="pollName">Poll name</label>
@@ -72,8 +71,6 @@ function CreatePoll() {
 
                     <button type="button" onClick={addAnswer}>Add answer</button>
                     <button type="button" onClick={createPoll}>Create</button>
-
-                </div>
             </form>
         </div>
     );

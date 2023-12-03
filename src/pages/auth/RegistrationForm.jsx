@@ -22,7 +22,7 @@ function RegistrationForm(){
     }
 
     return(
-        <div>
+        <div className="auth">
             <form action="src/pages/auth/RegistrationForm">
                 <div class={"registrationForm formContainer"}>
                     <h1>Registration</h1>

@@ -1,0 +1,13 @@
+.auth{
+    padding: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.auth form{
+    min-width: 500px;
+    width: 30%;
+    height: 70%;
+}
