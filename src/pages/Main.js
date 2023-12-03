@@ -1,25 +1,37 @@
-import React from 'react';
-import { CookiesProvider, useCookies } from "react-cookie";
+import React, {useEffect, useState} from 'react';
+import {useCookies } from "react-cookie";
 
 import {get_all_polls_request} from "../actions/poll";
+import Poll from "./Poll";
 
 function Main() {
-    const [cookie, setCookie] = useCookies(["token"]);
+    const [cookie, setCookie] = useCookies(['']);
 
-    function AllPollNames(){
-       let data = get_all_polls_request()
-        data.then(alert(data.pollTopic))
-    }
+    const [polls, setPolls] = useState([]);
+
+    useEffect(()=>{
+        get_all_polls_request(cookie.token).then((res)=>{
+            setPolls(res)
+        })
+    }, [])
+
+
+
+     function RenderPolls(){
+         return <div>
+
+         </div>
+     }
 
     return(
         <div>
-            <form action="">
                 <div className={"loginForm formContainer"}>
-                    <h1>Login</h1>
                     <div>
+                        {polls.map((poll)=>(
+                            Poll(poll)
+                        ))}
                     </div>
                 </div>
-            </form>
         </div>
     );
 }

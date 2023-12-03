@@ -1,17 +1,19 @@
 import React from 'react';
 import "../style/Poll.css"
 
-function Answer(name, question){
+function Answer(answer, question){
     return <li class="answerElem">
-        <label htmlFor={"answer_" + name}>{name}</label>
-        <input type="radio" name={question} id={"answer_" + name}/>
+        <label htmlFor={answer.id}>{answer.answerText}</label>
+        <input type="radio" name={question} id={answer.id} value={answer.id}/>
+        <p>{answer.selected}</p>
     </li>
 }
 
 
-function Poll() {
-        var question="who?"
-        var answers=["me", "not me"]
+function Poll(poll) {
+       // var question=poll.pollTopic
+        var question=poll.question.questionText
+       var answers=poll.question.answers
     return(
         <div>
             <div class="poll">
@@ -19,7 +21,7 @@ function Poll() {
                 <div>
                 <div>
                     <ul>
-                        {answers.map((elem)=>Answer(elem, question))}
+                        {answers.map(ans=>Answer(ans, question))}
                     </ul>
                 </div>
             </div>

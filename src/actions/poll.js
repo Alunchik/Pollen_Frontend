@@ -4,10 +4,10 @@ import {useCookies} from "react-cookie";
 
 
 
-export const get_all_polls_request = async ()=> {
+export const get_all_polls_request = async (token)=> {
     try {
-        const response = await axios.get("http://localhost:8189/poll");
-        return response.data
+        const response = await axios.get("http://localhost:8189/poll", { headers: {"Authorization" : `Bearer ${token}`} });
+        return(response.data)
     } catch (e) {
         alert(e)
     }
