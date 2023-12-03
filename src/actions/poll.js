@@ -16,7 +16,7 @@ export const get_all_polls_request = async (token)=> {
 
 export const vote_at_poll_request = async (token, answerId)=> {
     try {
-        const response = await axios.put("http://localhost:8189/poll/1/vote?answerId=" + answerId, { headers: {"Authorization" : `Bearer ${token}`}});
+        const response = await axios.put("http://localhost:8189/poll/1/vote",{}, { headers: {"Authorization" : `Bearer ${token}`}, params:{"answerId":answerId}});
         return(response.data)
     } catch (e) {
         alert(e)
